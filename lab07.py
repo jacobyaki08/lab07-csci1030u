@@ -12,7 +12,15 @@ def count_occurrences(target, values):
     #   Base case: an empty list contains it 0 times.
     #   Recursive case: 1 (if the first item equals `target`, otherwise 0) plus the
     #   count in the rest of the list, values[1:].
-    pass
+    if not values:
+        return 0
+    
+    if values[0] == target:
+        current_match = 1
+    else: 
+        current_match = 0
+
+    return current_match + count_occurrences(target, values[1:])
 
 
 def is_sorted(values):
@@ -20,24 +28,35 @@ def is_sorted(values):
     #   (every item is <= the one after it), otherwise False.
     #   Base case: a list of 0 or 1 items is already sorted.
     #   Recursive case: the first two items are in order AND the rest is sorted.
+    if len(values) <= 1:
+        return True
+
+    return values[0] <= values[1] and is_sorted(values[1:])
+
     pass
 
 
 class Rectangle:
     def __init__(self, width, height):
         # TODO (Part 3, OOP): store width and height on self
+        self.width = width
+        self.height = height
         pass
 
     def area(self):
         # TODO: return width * height
+        return (self.width * self.height)
         pass
 
     def perimeter(self):
         # TODO: return 2 * (width + height)
+
+        return (2 * (self.width + self.height))
         pass
 
     def __str__(self):
         # TODO: return "<width>x<height>", e.g. Rectangle(3, 4) -> "3x4"
+        return f"{self.width}x{self.height}"
         pass
 
 
@@ -60,3 +79,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
